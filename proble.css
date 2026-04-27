@@ -1,0 +1,412 @@
+/* ===== RESET E BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(135deg, #f4f9f4 0%, #e8f5e9 100%);
+  color: #2c3e50;
+  line-height: 1.7;
+  min-height: 100vh;
+  padding: 0;
+  margin-bottom: 0;
+  overflow-x: hidden;
+}
+
+/* Esconde elementos usados como espaçamento */
+hr,
+br {
+  display: none;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(135deg, #ffffff 0%, #f4f7f5 100%);
+  padding: 0;
+  box-shadow: 0 4px 20px rgba(46, 204, 113, 0.1);
+  border-bottom: 3px solid #2ecc71;
+}
+
+/* ===== TÍTULO PRINCIPAL DO HEADER ===== */
+header h1 {
+  text-align: left;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #1e6b3a;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #d4edda 0%, #ffffff 100%);
+  border-top: 1px solid rgba(46, 204, 113, 0.2);
+  letter-spacing: 0.5px;
+}
+
+/* ===== NAVEGAÇÃO ===== */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-btn {
+  width: 55px;
+  height: 55px;
+  background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+  border: none;
+  border-radius: 16px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  transition: all 0.4s ease;
+  z-index: 10002;
+  position: relative;
+}
+
+.menu-btn:hover {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  transform: translateY(-4px);
+}
+
+/* ===== LINKS DO MENU ===== */
+.nav-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 0;
+  background: rgba(44, 62, 80, 0.98);
+  backdrop-filter: blur(25px);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+
+  padding: 0 20px 0 90px;
+  overflow: hidden;
+
+  transition: all 0.4s ease;
+  transform: translateY(-100%);
+
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+
+  padding: 14px 22px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+
+  white-space: nowrap;
+  transition: all 0.3s ease;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: left;
+}
+
+.nav-links a:hover {
+  background: #2ecc71;
+  transform: translateY(-2px);
+}
+
+/* MENU ABERTO DESKTOP */
+#menu-toggle:checked ~ .nav-links {
+  height: 85px;
+  padding: 22px 20px 22px 90px;
+  transform: translateY(0);
+}
+
+/* BOTÃO VIRA ✕ */
+#menu-toggle:checked + .menu-btn::before {
+  content: '✕';
+}
+
+/* OVERLAY */
+.navbar::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+
+  z-index: 9999;
+}
+
+#menu-toggle:checked ~ .nav-links ~ *::after,
+#menu-toggle:checked ~ .navbar::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== MAIN ===== */
+main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
+
+  text-align: left;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+/* ===== IMAGEM DENTRO DO MAIN ===== */
+main img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
+  border: 4px solid #ffffff;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+main img:hover {
+  transform: scale(1.02) translateY(-4px);
+  box-shadow: 0 15px 40px rgba(46, 204, 113, 0.3);
+}
+
+/* ===== TÍTULOS DAS SEÇÕES ===== */
+main h1,
+body > h1 {
+  max-width: 1100px;
+  width: 100%;
+
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: #1e6b3a;
+  background: #ffffff;
+
+  padding: 20px 28px;
+  border-left: 6px solid #2ecc71;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  animation: fadeInUp 0.6s ease-out backwards;
+
+  text-align: left;
+}
+
+body > h1 {
+  margin: 24px auto;
+}
+
+/* ===== PARÁGRAFOS COMO CARDS ===== */
+main p,
+body > p {
+  max-width: 1100px;
+  width: 100%;
+
+  background: #ffffff;
+  padding: 24px 28px;
+
+  border-radius: 12px;
+  border-left: 5px solid #2ecc71;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #34495e;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease-out backwards;
+
+  text-align: left;
+}
+
+body > p {
+  margin: 24px auto 40px;
+}
+
+main p:hover,
+body > p:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(46, 204, 113, 0.15);
+}
+
+/* Esconde os br dentro de parágrafos para deixar texto fluido */
+main p br,
+body > p br {
+  display: none;
+}
+
+/* Mantém os br do endereço */
+main p:last-of-type br {
+  display: inline;
+}
+
+/* Destaque para o parágrafo do endereço */
+main p:last-of-type {
+  background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+  border-left: 5px solid #27ae60;
+  font-weight: 500;
+}
+
+/* ===== LISTA ===== */
+ul {
+  max-width: 1100px;
+  width: 100%;
+
+  background: #ffffff;
+  padding: 24px 28px 24px 50px;
+
+  border-radius: 12px;
+  border-left: 5px solid #2ecc71;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  list-style: none;
+  animation: fadeInUp 0.6s ease-out backwards;
+
+  text-align: left;
+}
+
+ul li {
+  position: relative;
+  padding: 12px 0 12px 32px;
+
+  border-bottom: 1px dashed rgba(46, 204, 113, 0.25);
+
+  color: #34495e;
+  line-height: 1.7;
+
+  transition: transform 0.3s ease, color 0.3s ease;
+
+  text-align: left;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li::before {
+  content: '♻️';
+  position: absolute;
+  left: 0;
+  top: 12px;
+
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+ul li:hover {
+  transform: translateX(6px);
+  color: #1e6b3a;
+}
+
+ul li:hover::before {
+  transform: rotate(180deg);
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+main > *:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+main > *:nth-child(3) {
+  animation-delay: 0.25s;
+}
+
+main > *:nth-child(4) {
+  animation-delay: 0.35s;
+}
+
+main > *:nth-child(5) {
+  animation-delay: 0.45s;
+}
+
+main > *:nth-child(6) {
+  animation-delay: 0.55s;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    top: 0;
+    left: 0;
+    right: auto;
+
+    width: clamp(240px, 75vw, 320px);
+    height: 100vh;
+
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    padding: 80px 20px 20px 20px;
+    gap: 15px;
+
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+
+    border-radius: 0;
+
+    text-align: left;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 12px;
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  #menu-toggle:checked ~ .nav-links {
+    transform: translateX(0);
+    height: 100vh;
+  }
+
+  main,
+  body > h1,
+  body > p {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
